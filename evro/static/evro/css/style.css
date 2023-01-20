@@ -1,0 +1,184 @@
+:root{
+    --white: #fff;
+    --grey: #e2e3e1;
+    --blue: #b8d3ff;
+    --green: #bdffbd;
+    --ligth_green: #706d50;
+    --skill:#005de0;
+    }
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.header_title{
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+.header_subtite{
+    margin-bottom: 5px;
+}
+.header{
+    text-align: center;
+}
+.form_row{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.form_column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px
+}
+#placeDTP_id,
+#id_withesses{
+    min-width: 85%;
+    border: none;
+    border-bottom: solid 1px;
+}
+
+
+
+label{
+    margin-right: 5px;
+    max-width: 70%
+}
+
+.litle_text{
+    font-size: 10px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#id_time{
+    width: 60px;
+
+}
+.date{
+    margin-right: 20px;
+}
+
+#id_time{
+    width: 90px;
+    margin-right: 30px;
+}
+#id_deaded,
+#id_victims,
+#id_quantity_tc{
+    width: 25px;
+    margin-right: 5px;
+}
+
+
+.form_text{
+    margin-right: 10px;
+    max-width: 70%
+}
+.form-text,
+#id_drunk_yes,
+#id_damage_yes,
+#id_damage_no,
+#id_polis_men_yes,
+#id_polis_men_no,
+#id_driver_name_a,
+#id_damage_yes_a,
+#id_driver_name_b,
+#id_damage_yes_b{
+    margin-right: 10px;
+}
+
+.main_block{
+    padding: 2px 5px;
+    border:1px solid;
+    border-radius: 3px;
+    box-shadow: 10px 5px 5px var(--ligth_green);
+    margin-bottom: 10px;
+}
+.seria{
+    width:50px;
+    margin-right: 10px;
+}
+.number{
+    width: 150px;
+    margin-right: 10px;
+}
+#id_adress_driver_a,
+#id_adress_a,
+#id_visible_damage_a,
+#id_adress_b,
+#id_adress_driver_b,
+#id_visible_damage_b
+{
+    width: 70%;
+}
+.margin_left{
+    margin-left: 18px;
+}
+.header_subtite{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.case_text{
+    font-size: 15px;
+    text-align: center;
+    width:70%;
+
+
+}
+.case_block{
+    background: var(--grey);
+}
+.a_block{
+    background:var(--blue);
+}
+.b_block{
+    background:var(--green);
+}
+.m_block{
+    background:var(--grey);
+}
+.case{
+    width: 15%;
+    text-align: center;
+}
+
+
+
+.quantity_win_a,
+.quantity_win_b{
+    border: solid 2px;
+    width: 27px;
+    margin: 0 auto;
+    height: 20px;
+    border-radius: 3px;
+}
+
+.btn_form{
+    width: 250px;
+    height:50px;
+    border-radius: 3px;
+    background: var(--skill);
+    margin: 0 auto 15px;
+    display: block;
+    color: var(--white);
+    font-weight: 900;
+}
+.managet{
+    margin-right: 10px;
+}
+.errorlist li {
+    color: red;
+}
+.wrapper{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: var(--green);
+}

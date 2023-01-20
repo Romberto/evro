@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'evro/css/normilize.css' %}">
+    <link rel="stylesheet" href="{% static 'evro/css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1 class="header_title">Извещение о дорожно-транспортном происшествии</h1>
+
+    </header>
+    <main class="main">
+
+        <form action="#" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="main_block m_block">
+                <p class="header_subtite">Составляется водителями ТС. Содержит данные об обстоятельствах ДТП, его
+                    участниках.</p>
+                <div class="form_row">
+                    <label for="{{form.placeDTP.id_for_lable}}">1. Место ДТП</label>
+                    {{form.placeDTP}}
+                </div>
+                <p class="litle_text">(республика, край, область, район, населенный пункт, улица, дом)</p>
+                <div class="form_row">
+                    <label for="{{form.date.id_for_lable}}">2.Дата ДТП</label>
+
+                    {{form.date}}
+                    {{form.time}}
+                    <label for="{{form.time.id_for_lable}}">3. Количество поврежденных ТС</label>
+                    {{form.quantity_tc}}
+                    {{form.quantity_tc.errors}}
+                </div>
+                <div class="form_row">
+                    <label for="{{form.time.id_for_lable}}">4. Количество раненых (лиц, получивших телесные
+                        повреждения)</label>
+                    {{form.victims}}
+                    {{form.victims.errors}}
+                    <label for="{{form.time.id_for_lable}}">погибших</label>
+                    {{form.deaded}}
+                    {{form.deaded.errors}}
+                </div>
+                <div class="form_row">
+                    <p class="form_text">5. Проводилось ли освидетельствование участников ДТП на состояние опьянения</p>
+                    <label for="{{form.drunk_yes.id_for_lable}}">ДА</label>
+                    {{form.drunk_yes}}
+                    <label for="{{form.drunk_no.id_for_lable}}">НЕТ</label>
+                    {{form.drunk_no}}
+                </div>
+                <div class="form_row">
+                    <p class="form_text">6. Материальный ущерб, нанесенный другим транспортным средствам (кроме "А" и
+                        "В")</p>
+                    <label for="{{form.damage_yes.id_for_lable}}">ДА</label>
+                    {{form.damage_yes}}
+                    <label for="{{form.damage_no.id_for_lable}}">НЕТ</label>
+                    {{form.damage_no}}
+                    <p class="form_text">другому имуществу</p>
+                    <label for="{{form.other_damage_yes.id_for_lable}}">ДА</label>
+                    {{form.other_damage_yes}}
+                    <label for="{{form.other_damage_no.id_for_lable}}">НЕТ</label>
+                    {{form.other_damage_no}}
+
+                </div>
+                <div class="form_row">
+                    <label for="{{form.withesses.id_for_lable}}">7. Свидетели ДТП:</label>
+                    {{form.withesses.errors}}
+                    {{form.withesses}}
+                </div>
+                <div class="form_row">
+                    <p class="form_text">8. Проводилось ли оформление сотрудником ГИБДД:</p>
+                    <label for="{{form.polis_men_yes.id_for_lable}}">ДА</label>
+                    {{form.polis_men_yes}}
+                    <label for="{{form.polis_men_no.id_for_lable}}">НЕТ</label>
+                    {{form.polis_men_no}}
+                    {{form.bange_number.errors}}
+                    {{form.bange_number}}
+
+                </div>
+            </div>
+            <div class="main_block a_block">
+                <p class="header_subtite">Транспортное средство "А"</p>
+                <div class="form_row">
+                    <label for="{{form.model_a.id_for_lable}}">9. Марка, модель ТС</label>
+                    {{form.model_a}}
+                    {{form.model_a.errors}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.number_vin_a.id_for_lable}}">Идентификационный номер (VIN)
+                        ТС</label>
+                    {{from.number_vin_a.errors}}
+                    {{form.number_vin_a}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.number_vin_a.id_for_lable}}">Государственный регистрационный
+                        знак ТС</label>
+                    {{from.number_tc_a.errors}}
+                    {{form.number_tc_a}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.number_vin_a.id_for_lable}}">Свидетельство о регистрации
+                        ТС</label>
+                    {{from.tex_seria_a.errors}}
+                    {{form.tex_seria_a}}
+                    {{from.tex_number_a.errors}}
+                    {{form.tex_number_a}}
+                </div>
+                <div class="form_row">
+                    <label for="{{form.owner_name_a.id_for_lable}}">10. Собственник ТС</label>
+                    {{from.owner_name_a.errors}}
+                    {{form.owner_name_a}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.owner_name_a.id_for_lable}}">Адрес:</label>
+                    {{from.adress_a.errors}}
+                    {{form.adress_a}}
+                </div>
+                <div class="form_row">
+                    <label for="{{form.owner_name_a.id_for_lable}}">11. Водитель ТС</label>
+                    {{from.driver_name_a.errors}}
+                    {{form.driver_name_a}}
+                    <label for="{{form.owner_name_a.id_for_lable}}">Дата рождения</label>
+                    {{form.born_data_a}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.adress_driver_a.id_for_lable}}">Адрес:</label>
+                    {{form.adress_driver_a}}
+                    {{form.adress_driver_a.errors}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.phone_a.id_for_lable}}">Телефон:</label>
+                    {{form.phone_a}}
+                    {{form.phone_a.errors}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.driver_seria_a.id_for_lable}}">Водительское
+                        удостоверение:</label>
+                    {{form.driver_seria_a}}
+                    {{form.driver_seria_a.errors}}
+                    {{form.driver_number_a}}
+                    {{form.driver_number_a.errors}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.driver_seria_a.id_for_lable}}">Категория:</label>
+                    {{form.category_a}}
+                    {{form.category_a.errors}}
+                    <p class="form_text">дата выдачи</p>
+                    {{form.category_date_a}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.contract_a.id_for_lable}}">Документ на право владения,
+                        пользования, распоряжения ТС:</label>
+                    {{form.contract_a}}
+                    {{form.contract_a.errors}}
+                </div>
+                <div class="form_row">
+                    <label for="{{form.insurer_a.id_for_lable}}">12. Страховщик</label>
+                    {{form.insurer_a}}
+                    {{form.insurer_a.errors}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.polis_seria_a.id_for_lable}}">Страховой полис</label>
+                    {{form.polis_seria_a}}
+                    {{form.polis_seria_a.errors}}
+                    {{form.polis_number_a}}
+                    {{form.polis_number_a.errors}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.polis_seria_a.id_for_lable}}">Действителен до</label>
+                    {{form.polis_date_end_a}}
+                </div>
+                <div class="form_row">
+                    <p class="margin_left form_text">ТС застраховано от ущерба</p>
+                    <label for="{{form.damage_yes_a.id_for_lable}}">ДА</label>
+                    {{form.damage_yes_a}}
+                    <label for="{{form.damage_no_a.id_for_lable}}">НЕТ</label>
+                    {{form.damage_no_a}}
+                </div>
+                <div class="form_row">
+                    <p class="form_text">14. Характер и перечень видимых поврежденных деталей и элементов</p>
+                </div>
+                <div class="form_row">
+                    {{form.visible_damage_a}}
+                </div>
+
+
+            </div>
+
+            <div class="main_block b_block">
+                <p class="header_subtite">Транспортное средство "B"</p>
+                <div class="form_row">
+                    <label for="{{form.model_b.id_for_lable}}">9. Марка, модель ТС</label>
+                    {{form.model_b}}
+                    {{form.model_b.errors}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.number_vin_b.id_for_lable}}">Идентификационный номер (VIN)
+                        ТС</label>
+                    {{from.number_vin_b.errors}}
+                    {{form.number_vin_b}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.number_vin_b.id_for_lable}}">Государственный регистрационный
+                        знак ТС</label>
+                    {{from.number_tc_b.errors}}
+                    {{form.number_tc_b}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.number_vin_b.id_for_lable}}">Свидетельство о регистрации
+                        ТС</label>
+                    {{from.tex_seria_b.errors}}
+                    {{form.tex_seria_b}}
+                    {{from.tex_number_b.errors}}
+                    {{form.tex_number_b}}
+                </div>
+                <div class="form_row">
+                    <label for="{{form.owner_name_b.id_for_lable}}">10. Собственник ТС</label>
+                    {{from.owner_name_b.errors}}
+                    {{form.owner_name_b}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.owner_name_b.id_for_lable}}">Адрес:</label>
+                    {{from.adress_b.errors}}
+                    {{form.adress_b}}
+                </div>
+                <div class="form_row">
+                    <label for="{{form.owner_name_b.id_for_lable}}">11. Водитель ТС</label>
+                    {{from.driver_name_b.errors}}
+                    {{form.driver_name_b}}
+                    <label for="{{form.owner_name_b.id_for_lable}}">Дата рождения</label>
+                    {{form.born_data_b}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.adress_driver_b.id_for_lable}}">Адрес:</label>
+                    {{form.adress_driver_b}}
+                    {{form.adress_driver_b.errors}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.phone_b.id_for_lable}}">Телефон:</label>
+                    {{form.phone_b}}
+                    {{form.phone_b.errors}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.driver_seria_b.id_for_lable}}">Водительское
+                        удостоверение:</label>
+                    {{form.driver_seria_b}}
+                    {{form.driver_seria_b.errors}}
+                    {{form.driver_number_b}}
+                    {{form.driver_number_b.errors}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.driver_seria_b.id_for_lable}}">Категория:</label>
+                    {{form.category_b}}
+                    {{form.category_b.errors}}
+                    <p class="form_text">дата выдачи</p>
+                    {{form.category_date_b}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.contract_b.id_for_lable}}">Документ на право владения,
+                        пользования, распоряжения ТС:</label>
+                    {{form.contract_b}}
+                    {{form.contract_b.errors}}
+                </div>
+                <div class="form_row">
+                    <label for="{{form.insurer_b.id_for_lable}}">12. Страховщик</label>
+                    {{form.insurer_b}}
+                    {{form.insurer_b.errors}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.polis_seria_b.id_for_lable}}">Страховой полис</label>
+                    {{form.polis_seria_b}}
+                    {{form.polis_seria_b.errors}}
+                    {{form.polis_number_b}}
+                    {{form.polis_number_b.errors}}
+                </div>
+                <div class="form_row">
+                    <label class="margin_left" for="{{form.polis_seria_b.id_for_lable}}">Действителен до</label>
+                    {{form.polis_date_end_b}}
+                </div>
+                <div class="form_row">
+                    <p class="margin_left form_text">ТС застраховано от ущерба</p>
+                    <label for="{{form.damage_yes_b.id_for_lable}}">ДА</label>
+                    {{form.damage_yes_b}}
+                    <label for="{{form.damage_no_b.id_for_lable}}">НЕТ</label>
+                    {{form.damage_no_b}}
+                </div>
+                <div class="form_row">
+                    <p class="form_text">14. Характер и перечень видимых поврежденных деталей и элементов</p>
+                </div>
+                <div class="form_row">
+                    {{form.visible_damage_b}}
+                </div>
+
+
+            </div>
+            <div class="main_block case_block">
+                <p class="header_subtite">"A" 16.Обстоятельства ДТП (нужное отметить) "В"</p>
+                <div class="form_row">
+                    {{form.one_a}}1
+                    <p class="case_text">ТС находилось на стоянке, парковке, обочине и т.п. в неподвижном состояние</p>
+                    1{{form.one_b}}
+                </div>
+                <div class="form_row">
+                    {{form.two_a}}2
+                    <p class="case_text">Водитель отсутствовал на месте ДТП</p>
+                    2{{form.two_b}}
+                </div>
+                <div class="form_row">
+                    {{form.free_a}}3
+                    <p class="case_text">Двигался на стоянке</p>
+                    3{{form.free_b}}
+                </div>
+                <div class="form_row">
+                    {{form.four_a}}4
+                    <p class="case_text">Выезжал со стоянки,с места парковки, остановки, со двора, второстепенной
+                        дороги</p>
+                    4{{form.four_b}}
+                </div>
+                <div class="form_row">
+                    {{form.five_a}}5
+                    <p class="case_text">Заезжал на стоянку, парковку, во двор, на второстепенную дорогу</p>
+                    5{{form.five_b}}
+                </div>
+                <div class="form_row">
+                    {{form.six_a}}6
+                    <p class="case_text">Двигался прямо (не маневрировал)</p>
+                    6{{form.six_b}}
+                </div>
+                <div class="form_row">
+                    {{form.seven_a}}7
+                    <p class="case_text">Двигался на перекрестке</p>
+                    7{{form.seven_b}}
+                </div>
+                <div class="form_row">
+                    {{form.eigth_a}}8
+                    <p class="case_text">Заезжал на перекресток</p>
+                    8{{form.eigth_b}}
+                </div>
+                <div class="form_row">
+                    {{form.nine_a}}9
+                    <p class="case_text">Двигался по перекрестку</p>
+                    9{{form.nine_b}}
+                </div>
+                <div class="form_row">
+                    {{form.ten_a}}10
+                    <p class="case_text">Столкнулся с ТС, двигавшемся в том же направление по той же полосе</p>
+                    10{{form.ten_b}}
+                </div>
+                <div class="form_row">
+                    {{form.eleven_a}}11
+                    <p class="case_text">Столкнулся с ТС, двигавшимся в том же направлении по другой полосе (в другом
+                        ряду)</p>
+                    11{{form.eleven_b}}
+                </div>
+                <div class="form_row">
+                    {{form.twelve_a}}12
+                    <p class="case_text">Менял полосу (перестраивался в другой ряд)</p>
+                    12{{form.twelve_b}}
+                </div>
+                <div class="form_row">
+                    {{form.thirteen_a}}13
+                    <p class="case_text">Обгонял</p>
+                    13{{form.thirteen_b}}
+                </div>
+                <div class="form_row">
+                    {{form.fourteen_a}}14
+                    <p class="case_text">Поворачивал направо</p>
+                    14{{form.fourteen_b}}
+                </div>
+                <div class="form_row">
+                    {{form.fiveteen_a}}15
+                    <p class="case_text">Поворачивал налево</p>
+                    15{{form.fiveteen_b}}
+                </div>
+                <div class="form_row">
+                    {{form.sixteen_a}}16
+                    <p class="case_text">Совершал разворот</p>
+                    16{{form.sixteen_b}}
+                </div>
+                <div class="form_row">
+                    {{form.seventeen_a}}17
+                    <p class="case_text">Двигался задним ходом</p>
+                    17{{form.seventeen_b}}
+                </div>
+                <div class="form_row">
+                    {{form.eigthteen_a}}18
+                    <p class="case_text">Выехал на сторону дороги, предназначенную для встречного движения</p>
+                    18{{form.eigthteen_b}}
+                </div>
+                <div class="form_row">
+                    {{form.nineteen_a}}19
+                    <p class="case_text">Второе ТС находилось слева от меня</p>
+                    19{{form.nineteen_b}}
+                </div>
+                <div class="form_row">
+                    {{form.twenty_a}}20
+                    <p class="case_text">Не выполнил требование знака приоритета</p>
+                    20{{form.twenty_b}}
+                </div>
+                <div class="form_row">
+                    {{form.twenty_one_a}}21
+                    <p class="case_text">Совершил наезд (на неподвижное ТС, препятствие, пешехода и т.п.)</p>
+                    21{{form.twenty_one_b}}
+                </div>
+                <div class="form_row">
+                    {{form.twenty_two_a}}22
+                    <p class="case_text">Остановился (стоял) на запрещающий сигнал светофора</p>
+                    22{{form.twenty_two_b}}
+                </div>
+                <div class="form_row">
+                    {{form.twenty_free_a}}23
+                    <p class="case_text">Иное (для водителя ТС "А"):</p>
+                    <p class="case"></p>
+                </div>
+                <div class="form_row">
+                    <p class="case"></p>
+                    <p class="case_text">Иное (для водителя ТС "B"):</p>
+                    24{{form.twenty_four_b}}
+                </div>
+                <div class="form_row">
+                    <div class="case">
+                        {{form.quantity_a}}
+                        <p class="quantity_win_a"></p>
+                    </div>
+                    <p class="case_text">Указать количество отмеченных клеток</p>
+                    <div class="case">
+                        {{form.quantity_b}}
+                        <p class="quantity_win_b"></p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="main_block case_block">
+                <p class="header_subtite">Второй лист</p>
+                <div class="form_row">
+                    <p class="form_text">1. Транспортное средство</p>
+                    <label class="margin_left" for="{{form.transport_a.id_for_lable}}">"A"</label>
+                    {{form.transport_a}}
+                    {{form.transport_a.errors}}
+                    <label class="margin_left" for="{{form.transport_b.id_for_lable}}">"B"</label>
+                    {{form.transport_b}}
+                    {{form.transport_b.errors}}
+                </div>
+                <div class="form_row">
+                    <!--                    {{form.circumstances.lable}}-->
+                    <label for="{{form.circumstances.id_for_lable}}">2. Обстоятельства ДТП</label>
+                </div>
+                <div class="form_row">
+                    {{form.circumstances}}
+                    {{form.circumstances.errors}}
+                </div>
+                <div class="form_row">
+                    <p class="form_text">3. ТС находилось под управлением</p>
+                    <div class="form_column">
+                        <div class="form_row">
+
+                            {{form.managet_owner}}
+                            {{form.managet_owner.errors}}
+                            <p class="form_text">собственника ТС</p>
+                        </div>
+                        <div class="form_row">
+                            {{form.managet_another}}
+                            {{form.managet_another.errors}}
+                            <p class="form_text">иного лица, допущенного к управлению ТС</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form_row">
+                    <p class="form_text">4. Загрузите фото 1:</p>
+                    {{form.photo_one}}
+                </div>
+                <div class="form_row">
+                    <p class="form_text margin_left"> Загрузите фото 2:</p>
+                    {{form.photo_two}}
+                </div>
+                <div class="form_row">
+                    <p class="form_text">5. Может ли ТС передвигаться своим ходом?</p>
+                    {{form.work_auto_yes}}
+                    <label for="{{form.work_auto_yes.id_for_lable}}">Да</label>
+                    {{form.work_auto_no}}
+                    <label for="{{form.work_auto_no.id_for_lable}}">Нет</label>
+                </div>
+                <div class="form_row">
+                    <p class="form_text">если "Нет", то где сейчас находится ТС:</p>
+                </div>
+                <div class="form_row">
+                    {{form.location}}
+                    {{form.location.errors}}
+                </div>
+                <div class="form_row">
+                    <p class="form_text">6. Примечание:</p>
+                </div>
+                <div class="form_row">
+                    {{form.note}}
+                    {{form.note.errors}}
+                </div>
+
+
+            </div>
+
+
+            <button class="btn_form" type="submit"> СОЗДАТЬ PDF</button>
+        </form>
+
+
+    </main>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'evro/js/main.js' %}"></script>
+</body>
+</html>
